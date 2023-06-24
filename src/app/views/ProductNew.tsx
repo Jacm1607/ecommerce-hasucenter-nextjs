@@ -1,9 +1,8 @@
 import CardProduct from "@/components/CardProduct";
 import TitleSection from "@/components/TitleSection";
 import Link from "next/link";
-import React from "react";
 
-const ProductNewHome = () => {
+const ProductNew = () => {
     return (
         <div className="my-16">
             <TitleSection title="DESCUBRE LAS" subtitle="NOVEDADES HAUS" />
@@ -22,4 +21,4 @@ const ProductNewHome = () => {
     )
 }
 
-export default ProductNewHome;
+export default ProductNew;

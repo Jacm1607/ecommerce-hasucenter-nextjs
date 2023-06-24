@@ -1,22 +1,19 @@
-import HeaderHome from './sections/HeaderHome'
-import BannerHome from './sections/BannerHome'
-import CategoryHome from './sections/CategoryHome'
-import AdsHome from './sections/AdsHome'
-import ProductNewHome from './sections/ProductNewHome'
-import { Footer } from '@/components/Footer'
+import Banner from './views/Banner'
+import Category from './views/Category'
+import Ads from './views/Ads'
+import ProductNew from './views/ProductNew'
+import LayoutHome from './layout/layoutHome'
 
-export default function Home() {
-  return (
-    <>
-      <HeaderHome/>
-      <BannerHome/>
-      <div className="md:container md:mx-auto">
-        <CategoryHome/>
-      <AdsHome/>
-      </div>
-      <ProductNewHome/>
-      <ProductNewHome/>
-      <Footer/>
-    </>
-  )
-}
+const Home = () => (
+  <LayoutHome>
+    <Banner />
+    <div className="md:container md:mx-auto">
+      <Category />
+      <Ads />
+    </div>
+    <ProductNew />
+    <ProductNew />
+  </LayoutHome>
+)
+
+export default Home;

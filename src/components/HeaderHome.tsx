@@ -1,7 +1,6 @@
 import HeaderOption from "@/components/HeaderOption";
 import Search from "@/components/Search";
 import Image from "next/image";
-import React from "react";
 
 const HeaderHome = () => {
     return (

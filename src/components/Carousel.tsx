@@ -1,7 +1,6 @@
-"use client"
 import { useState } from 'react';
 import ReactSimplyCarousel from 'react-simply-carousel';
-import { CardProduct } from './CardProduct';
+import CardProduct from './CardProduct';
 
 function Carousel() {
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);

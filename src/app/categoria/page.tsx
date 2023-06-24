@@ -1,10 +1,15 @@
-import { Footer } from "@/components/Footer";
+"use client"
+import Category from "./views/Category";
+import LayoutProject from "../layout/layoutProyect";
+import TitleSectionBorder from "@/components/TitleSectionBorder";
 
 export default function Home() {
   return (
     <>
-      <h1>Categoria</h1>
-      <Footer/>
+      <LayoutProject>
+        <TitleSectionBorder title="Categoria" />
+        <Category />
+      </LayoutProject>
     </>
   )
 }

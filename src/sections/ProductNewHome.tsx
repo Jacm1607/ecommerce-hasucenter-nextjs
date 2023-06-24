@@ -1,7 +1,7 @@
+
 import CardProduct from "@/components/CardProduct";
 import TitleSection from "@/components/TitleSection";
 import Link from "next/link";
-import React from "react";
 
 const ProductNewHome = () => {
     return (

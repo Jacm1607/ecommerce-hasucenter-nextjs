@@ -1,7 +1,7 @@
 import TitleSection from "@/components/TitleSection";
 import Image from "next/image";
 
-const AdsHome = () => {
+const Ads = () => {
     return (
         <div className="flex flex-col items-center">
             <TitleSection title="DESCUBRE LAS" subtitle="NOVEDADES HAUS" />
@@ -20,4 +20,4 @@ const AdsHome = () => {
     )
 }
 
-export default AdsHome;
+export default Ads;
