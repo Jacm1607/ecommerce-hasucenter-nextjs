@@ -1,13 +1,20 @@
 import { TitleSection } from "@/components/TitleSection"
+import Image from "next/image";
 
 const AdsHome = () => {
     return (
         <div className="flex flex-col items-center">
             <TitleSection title="DESCUBRE LAS" subtitle="NOVEDADES HAUS" />
-            <div className="grid grid-rows-4 grid-flow-col gap-4 w-full h-[40rem] px-24">
-                <div className="row-span-4 bg-sky-700">01</div>
-                <div className="row-span-2 col-span-2 bg-sky-500">02</div>
-                <div className="row-span-2 col-span-2 bg-sky-300">03</div>
+            <div className="grid grid-rows-4 grid-cols-5 gap-4 w-full">
+                <div className="md:row-span-4 row-span-2 md:col-span-3 col-span-5">
+                    <Image src="http://via.placeholder.com/1020x693" width={1020} height={693} style={{ width: '100%', height: '100%' }} alt="Picture of the author" />
+                </div>
+                <div className="md:row-span-2 row-span-2 md:col-span-2 col-span-5 bg-sky-500">
+                    <Image src="http://via.placeholder.com/656x337" width={656} height={337} style={{ width: '100%', height: '100%' }} alt="Picture of the author" />
+                </div>
+                <div className="md:row-span-2 row-span-2 md:col-span-2 col-span-5 bg-sky-300">
+                    <Image src="http://via.placeholder.com/656x337" width={656} height={337} style={{ width: '100%', height: '100%' }} alt="Picture of the author" />
+                </div>
             </div>
         </div>
     )

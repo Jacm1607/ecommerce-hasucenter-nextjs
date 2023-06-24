@@ -10,8 +10,10 @@ export default function Home() {
     <>
       <HeaderHome/>
       <BannerHome/>
-      <CategoryHome/>
+      <div className="md:container md:mx-auto">
+        <CategoryHome/>
       <AdsHome/>
+      </div>
       <ProductNewHome/>
       <ProductNewHome/>
       <Footer/>
