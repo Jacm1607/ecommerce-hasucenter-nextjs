@@ -44,7 +44,7 @@ import Link from "next/link"
 
 const TitleFooter = ({title}: any) => 
 <div className="flex items-center gap-4 my-2">
-    <Image src={"http://via.placeholder.com/50x50"} width={50} height={50} alt="" />
+    <Image src={"http://via.placeholder.com/50x50/png"} width={50} height={50} alt="" />
     <span className="text-2xl font-extrabold text-white">{title}</span>
 </div>
 

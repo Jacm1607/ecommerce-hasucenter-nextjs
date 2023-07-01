@@ -5,7 +5,7 @@ export default function LayoutProject({ children }: any) {
   return (
     <>
       <Header />
-      <div className="m-2">
+      <div className="md:container md:mx-auto">
         {children}
       </div>
       <Footer />
