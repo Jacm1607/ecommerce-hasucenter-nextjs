@@ -10,7 +10,7 @@ const Header = () => {
                     <Search />
                     <Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" />
                 </div>
-                <div className="col-span-2 lg:col-span-1 flex items-center justify-end gap-2">
+                <div className="lg:col-span-1 col-span-3 flex items-center justify-end gap-2">
                     <Button primary={false} label="MI CUENTA" />
                     <Button primary={false} label="Segui mi pedido" />
                     <Button primary={false} label="Credi Haus" />
