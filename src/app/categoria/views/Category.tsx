@@ -116,7 +116,7 @@ const Category = () => {
                <TitleSectionBorder title="Productos" />
 
                <div className="grid grid-cols-6 mt-5 ">
-                  <Link href={'/'} className="grid grid-cols-5 lg:col-span-4 col-span-6">
+                  <Link href={'producto'} className="grid grid-cols-5 lg:col-span-4 col-span-6">
                      <div className="md:col-span-2 col-span-5">
                         <Image className="border-solid border-2 border-sky-900 rounded-3xl" src={'https://placehold.co/500x500/png'} width={700} height={700} style={{ width: '195px', height: '195px', objectFit: 'cover' }} alt="12" />
                      </div>

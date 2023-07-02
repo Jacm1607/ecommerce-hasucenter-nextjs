@@ -27,8 +27,7 @@ const Category = () => {
      <div>
        <div className="w-full gap-4 p-4 flex flex-wrap justify-center">
        {
-        loading ? <Loading/> : response.data.map((item: any) => <Link className="flex flex-col items-center" key={item.id} href={{ pathname: '/categoria', query: { categoria: item.id },
-        }}><Image src="https://placehold.co/150x150/png" width={150} height={150} alt="Picture of the author" />{item.attributes.nombre}</Link>)
+        loading ? <Loading/> : response.data.map((item: any) => <Link className="flex flex-col items-center" key={item.id} href={{ pathname: '/categoria', query: { categoria: item.id },}}><Image src="https://placehold.co/150x150/png" width={150} height={150} alt="Picture of the author" />{item.attributes.nombre}</Link>)
        }
        </div>
      </div>
