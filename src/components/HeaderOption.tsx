@@ -19,7 +19,7 @@ const HeaderOption = () => {
           <Link className="font-bold text-sky-800" href={'/'}>FAVORITOS</Link>
         </div>
         <div className="flex flex-wrap justify-center lg:justify-end gap-2 my-4">
-          <Button label="MI CUENTA" />
+          <Link href={'mi-cuenta'} className="uppercase py-1 px-4 border-2 border-sky-800 rounded-3xl text-sky-800 hover:bg-sky-800 hover:text-white font-semibold place-items-center flex justify-center gap-2 h-12 w-40 text-start text-sm"><Image src={''} width={30} height={30} alt={""} /> Iniciar sesion</Link>
           <Button label="SEGUIR MI PEDIDO" />
           <Button label="CREDI HAUS" />
         </div>

@@ -8,8 +8,8 @@ export class Api {
         return data;
     }
 
-    async post(url: string){
-        const { data } = await this.axios.post(url);
+    async post(url: string, param: any){
+        const { data } = await this.axios.post(url, param);
         return data;
     }
 }
