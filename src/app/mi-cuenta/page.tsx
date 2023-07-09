@@ -194,12 +194,12 @@ const PageCuenta = () => {
 
                 <div className="flex flex-col mb-6">
                   <span className="text-xl font-extrabold text-sky-900 uppercase ">Usuario</span>
-                  <input type="text" onChange={handleEmailChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" />
+                  <input type="text" onChange={handleEmailChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" required placeholder="" />
                 </div>
 
                 <div className="flex flex-col">
                   <span className="text-xl font-extrabold text-sky-900 uppercase ">Contraseña</span>
-                  <input type="password" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" />
+                  <input type="password" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" required placeholder="" />
                 </div>
 
                 <center>
@@ -216,17 +216,17 @@ const PageCuenta = () => {
 
                 <div className="flex flex-col mb-6">
                   <span className="text-xl font-extrabold text-sky-900 uppercase ">Correo</span>
-                  <input type="text" onChange={handleEmailChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" />
+                  <input type="text" onChange={handleEmailChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" required placeholder="" />
                 </div>
 
                 <div className="flex flex-col mb-6">
                   <span className="text-xl font-extrabold text-sky-900 uppercase ">Usuario</span>
-                  <input type="text" onChange={handleUsernameChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" />
+                  <input type="text" onChange={handleUsernameChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" required placeholder="" />
                 </div>
 
                 <div className="flex flex-col">
-                  <span className="text-xl font-extrabold text-sky-900 uppercase ">Contrasenha</span>
-                  <input type="text" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" />
+                  <span className="text-xl font-extrabold text-sky-900 uppercase ">Contraseña</span>
+                  <input type="text" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" required placeholder="" />
                 </div>
 
                 <button type="submit" className="text-xl font-extrabold text-white bg-sky-900 rounded-full py-2 px-8 uppercase mt-4">Crear cuenta</button>

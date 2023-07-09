@@ -67,7 +67,7 @@ export default function PerfilHome() {
                                     </div>
     
                                     <div className="flex flex-col">
-                                        <span className="text-xl font-extrabold text-sky-900 uppercase ">Contrasenha</span>
+                                        <span className="text-xl font-extrabold text-sky-900 uppercase ">Contraseña</span>
                                         <input type="password" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" />
                                     </div>
     
@@ -94,7 +94,7 @@ export default function PerfilHome() {
                                     </div>
     
                                     <div className="flex flex-col">
-                                        <span className="text-xl font-extrabold text-sky-900 uppercase ">Contrasenha</span>
+                                        <span className="text-xl font-extrabold text-sky-900 uppercase ">Contraseña</span>
                                         <input type="text" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" />
                                     </div>
     

@@ -13,7 +13,7 @@ const Header = () => {
                 </div>
                 <div className="lg:col-span-1 col-span-3 flex items-center justify-end gap-2">
                     <Button url="/mi-cuenta" primary={false} label="MI CUENTA" />
-                    <Button primary={false} label="Segui mi pedido" />
+                    {/* <Button primary={false} label="Segui mi pedido" /> */}
                     <Button primary={false} label="Credi Haus" />
                 </div>
                 <div className="col-span-3 lg:col-span-1 flex flex-wrap justify-end">

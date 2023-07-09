@@ -1,6 +1,7 @@
 import HeaderOption from "@/components/HeaderOption";
 import Search from "@/components/Search";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeaderHome = () => {
     return (
@@ -8,7 +9,7 @@ const HeaderHome = () => {
             <div className="grid grid-cols-2 bg-sky-800 px-2">
                 <div className="col-span-2 lg:col-span-1 flex items-center gap-2 h-20">
                     <Search />
-                    <Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" />
+                    <Link href={'/lista-compra'}><Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" /></Link>
                 </div>
                 <div className="col-span-2 lg:col-span-1">
                     <div className="flex items-center justify-end gap-2 h-20">
