@@ -14,7 +14,7 @@ const Category = () => {
         const api = new Api();
          const data = await api.get('https://www.dashboard.hauscenter.com.bo/api/categorias');
          setLoading(false);
-         setResponse(data);
+         setResponse(data.data);
        } catch (error) {
          console.error('Error fetching data:', error);
        }

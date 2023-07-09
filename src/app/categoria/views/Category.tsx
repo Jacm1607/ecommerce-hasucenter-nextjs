@@ -38,14 +38,12 @@ const Category = () => {
    const [loading, setLoading] = useState<any>(true);
    const paramSearch = useSearchParams();
    const paramId = paramSearch.get('categoria') ?? 1;
-   console.log(paramId, 'Parametro')
    useEffect(() => {
       const fetchData = async () => {
          try {
             const api = new Api();
             const data = await api.get(`https://www.dashboard.hauscenter.com.bo/api/categorias/${paramId}?populate=*`);
-            console.log(data.data.attributes.subcategorias.data)
-            setResponse(data.data.attributes.subcategorias.data);
+            setResponse(data.data.data.attributes.subcategorias.data);
             setLoading(false);
          } catch (error) {
             console.error('Error fetching data:', error);

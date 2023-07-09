@@ -1,7 +1,10 @@
+'use client'
 import Image from "next/image";
 import LayoutProject from "../layout/layoutProyect";
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
+  const router = useRouter();
   return (
     <LayoutProject>
       <div className="grid grid-cols-6 mt-10 space-y-6">
@@ -28,7 +31,7 @@ export default function Home() {
               <select className="rounded-full border-2 border-solid border-sky-900 w-20 text-3xl text-center text-sky-900 font-bold" name="" id="">
                 <option value="1">1</option>
               </select>
-              <button className="rounded-full border-2 border-solid border-sky-900 text-3xl text-center text-white font-bold bg-sky-900 px-5">Comprar</button>
+              <button onClick={() => router.push('/lista-compra')} className="rounded-full border-2 border-solid border-sky-900 text-3xl text-center text-white font-bold bg-sky-900 px-5">Comprar</button>
             </div>
           </div>
         </div>

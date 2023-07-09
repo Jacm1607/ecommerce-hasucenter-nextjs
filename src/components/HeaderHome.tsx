@@ -16,10 +16,10 @@ const HeaderHome = () => {
                             <p className="text-white text-sm leading-4">CREDITO APROBADO EN 24 HORAS</p>
                         </div>
                         <div className="border-l-2 h-10 border-white">&nbsp;</div>
-                        <Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" />
-                        <Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" />
-                        <Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" />
-                        <Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" />
+                        <Image src="/facebook.png" width={40} height={40} alt="facebook" />
+                        <Image src="/instagram.png" width={40} height={40} alt="instagram" />
+                        <Image src="/youtube.png" width={40} height={40} alt="youtube" />
+                        <Image src="/tik-tok.png" width={40} height={40} alt="tiktok" />
                     </div>
                 </div>
             </div>
