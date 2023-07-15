@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 /* width */
+.scroll-category{
+  scrollbar-width: 2px;
+}
 ::-webkit-scrollbar {
     width: 6px;
-
   }
   
   /* Track */
@@ -17,6 +19,7 @@
   ::-webkit-scrollbar-thumb {
     background: #075985;
     border-radius: 20px;
+    width: 3px;
   }
   
   /* Handle on hover */
