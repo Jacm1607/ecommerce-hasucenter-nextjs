@@ -5,8 +5,8 @@ import Button from "./Button";
 const HeaderOption = () => {
   return (
     <div className="grid grid-cols-2 pb-4 border-b-2 border-sky-800">
-      <div className="col-span-2 lg:col-span-1">
-        <Image src="http://via.placeholder.com/464x130/png" width={464} height={130} style={{ width: '100%', height: 'auto' }} alt="http://via.placeholder.com/12x12" />
+      <div className="col-span-2 lg:col-span-1 p-4">
+        <Image src="/logo.jpg" width={464} height={130} style={{ width: '400px', height: 'auto' }} alt="Hauscenter" />
       </div>
       <div className="col-span-2 lg:col-span-1 m-4">
         <div className="flex flex-wrap justify-center lg:justify-end gap-2 ">
