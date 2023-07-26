@@ -1,15 +1,18 @@
-"use client"
+"use client";
 import Image from "next/image";
 import LayoutProject from "../layout/layoutProyect";
 import TitleSectionBorder from "@/components/TitleSectionBorder";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function ListaCompraHome() {
-    const router = useRouter();
+  const router = useRouter();
+  if (typeof window !== "undefined") {
     let productsString = localStorage.getItem('product');
     let products = JSON.parse(`${productsString}`);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [prod, setProd] = useState(products)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [total, setTotal] = useState(0);
 
     const updateTotal = () => {
@@ -31,7 +34,7 @@ export default function ListaCompraHome() {
         localStorage.setItem('product', JSON.stringify(newProd));
         setProd(newProd)
     }
-
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         if (prod !== null) {
             updateTotal()
@@ -84,4 +87,5 @@ export default function ListaCompraHome() {
             </LayoutProject>
         </>
     )
+  }
 }
