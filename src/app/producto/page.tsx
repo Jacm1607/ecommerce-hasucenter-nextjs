@@ -64,7 +64,7 @@ export default function Home() {
       modelo: prod.modelo.data !== null ? response.modelo.data.attributes.nombre : 'SIN MODELO',
       precio: prod.precio,
       precio_oferta: prod.precio_oferta,
-      catidad: selectValue
+      cantidad: selectValue
     }
 
     let product = localStorage.getItem('product')
@@ -72,14 +72,13 @@ export default function Home() {
     let arrayP = JSON.parse(`${product}`);
 
 
-    const indiceObjetoExistente = arrayP.findIndex((objeto:any) => objeto.id === obj.id);
+    const indiceObjetoExistente = arrayP.findIndex((objeto:any) => objeto.id === paramId);
 
     if (indiceObjetoExistente !== -1) {
-      const nuevosDatos = [...arrayP];
-      nuevosDatos[indiceObjetoExistente] = obj;
-      console.log(nuevosDatos);
+      arrayP[indiceObjetoExistente] = obj;
+      console.log(arrayP);
     } else {
-      [...arrayP, obj];
+      arrayP.push(obj)
     }
 
     localStorage.setItem('product', JSON.stringify(arrayP))
