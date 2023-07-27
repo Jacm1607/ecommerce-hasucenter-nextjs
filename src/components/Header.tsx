@@ -9,7 +9,7 @@ const Header = () => {
             <div className="grid grid-cols-3 bg-sky-800 px-2">
                 <div className="col-span-3 lg:col-span-1 flex items-center gap-2 h-20">
                     <Search />
-                    <Link href={'/lista-compra'} ><Image src="http://via.placeholder.com/50x50/png" width={50} height={50} alt="http://via.placeholder.com/12x12" /></Link>
+                    <Link href={'/lista-compra'} ><Image src="/bolsa-de-la-compra.png" width={50} height={50} alt="http://via.placeholder.com/12x12" /></Link>
                 </div>
                 <div className="lg:col-span-1 col-span-3 flex items-center justify-end gap-2">
                     <Button url="/mi-cuenta" primary={false} label="MI CUENTA" />
