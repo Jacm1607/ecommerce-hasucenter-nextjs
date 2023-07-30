@@ -6,28 +6,52 @@ import { useSearchParams } from 'next/navigation';
 import Loading from "@/components/Loading";
 import TitleSectionBorder from "@/components/TitleSectionBorder";
 
+const handleFetch = async (id: number, page = 1) => {
+
+   try {
+      const api = new Api();
+      const {data} = await api.get(`https://www.dashboard.hauscenter.com.bo/api/productos?populate[imagen][fields][0]=name&populate[imagen][fields][1]=url&populate[images]&populate[subcategoria]=*&filters[subcategoria][id][$eq]=${id}&pagination[page]=${page}`);
+      return data
+   } catch (error) {
+      console.error('Error fetching data:', error);
+   }
+}
+
 const LinkComponent = ({ subcategorias }: any) => {
+   const [idSub, setIdSub] = useState<any>();
    const [response, setResponse] = useState<any>([]);
+   const [count, setCount] = useState(1);
    const [loading, setLoading] = useState<any>(true);
 
-   const handleFetch = async (id: number) => {
-      try {
-         const api = new Api();
-         const dataProduct = await api.get(`https://www.dashboard.hauscenter.com.bo/api/productos?populate[imagen][fields][0]=name&populate[imagen][fields][1]=url&populate[images]&populate[subcategoria]=*&filters[subcategoria][id][$eq]=${id}`);
-         setResponse(dataProduct.data.data);
-         setLoading(false);
-      } catch (error) {
-         console.error('Error fetching data:', error);
-      }
+   const getInfo = async (idSubcategoria:number , page = 1) => {
+      setIdSub(idSubcategoria)
+      let info = await handleFetch(idSubcategoria, page);
+      setResponse(info)
+   }
+
+   const next = async () => {
+      setLoading(true)
+      setCount(count + 1);
+      let info = await handleFetch(idSub, count);
+      setResponse(info)
+      setLoading(false)
+   }
+
+   const back = async () => {
+      setLoading(true)
+      setCount(count - 1);
+      let info = await handleFetch(idSub, count);
+      setResponse(info)
+      setLoading(false)
    }
 
    useEffect(() => {
       const fetchData = async () => {
          try {
             const api = new Api();
-            const dataProduct = await api.get(`https://www.dashboard.hauscenter.com.bo/api/productos?populate[subcategoria]=*&filters[subcategoria][id][$eq]=${subcategorias.id}`);
-            console.log(dataProduct)
-            setResponse(dataProduct.data.data);
+            const {data} = await api.get(`https://www.dashboard.hauscenter.com.bo/api/productos?populate[subcategoria]=*&filters[subcategoria][id][$eq]=${subcategorias[0].id}&pagination[page]=1&populate[imagen][fields][0]=url`);
+            console.log(response)
+            setResponse(data);
             setLoading(false);
          } catch (error) {
             console.error('Error fetching data:', error);
@@ -43,7 +67,7 @@ const LinkComponent = ({ subcategorias }: any) => {
             <div className="inline-block min-w-full">
                {subcategorias.length < 1 ?
                   <> Sin subcategorias disponibles </> :
-                  subcategorias.map((item: any) => <div  onClick={() => handleFetch(item.id)} key={item.id} className="inline-block cursor-pointer mx-4"><center><Image src="https://placehold.co/150x150/png" width={150} height={150} alt="Picture of the author" />{item.attributes.nombre}</center></div>
+                  subcategorias.map((item: any) => <div onClick={() => getInfo(item.id)} key={item.id} className="inline-block cursor-pointer mx-4"><center><Image src="https://placehold.co/150x150/png" width={150} height={150} alt="Picture of the author" />{item.attributes.nombre}</center></div>
                   )}
             </div>
          </div>
@@ -106,41 +130,52 @@ const LinkComponent = ({ subcategorias }: any) => {
 
                {loading
                   ? <>Cargando...</>
-                  : <CardProduct products={response} />
+                  : response.data.length < 1 ? <>Sin productos disponibles</> : <>
+                  {response.data.map((element: any) =>
+                     <div key={element.id} className="grid grid-cols-6 mt-5 ">
+               
+                        <Link key={element} href={{ pathname: `/producto`, query: { producto: element.id } }} className="grid grid-cols-5 lg:col-span-4 col-span-6">
+                           <div className="md:col-span-2 col-span-5 w-[195px] h-[195px] border-solid border-2 border-sky-900 flex justify-center items-center rounded-3xl">
+                              <Image src={`https://www.dashboard.hauscenter.com.bo/${element.attributes.imagen.data[0].attributes.url}`} width={500} height={500} style={{ width: '140px', height: '140px', objectFit: 'contain' }} alt="12" />
+                           </div>
+                           <div className="md:col-span-3 col-span-5">
+                              <span className="upperacase text-[25px] font-bold text-sky-900 leading-6">{element.attributes.nombre}.</span><br />
+                              <span className="leading-3 text-sm">{element.attributes.descripcion_corta}</span>
+                           </div>
+                        </Link>
+                        <div className="lg:col-span-2 col-span-6 flex flex-col justify-between">
+                           <div className="text-right">
+                              <span className="upperacase text-[25px] font-bold text-sky-900">{element.attributes.precio}</span>
+                              <span className="upperacase text-[25px] font-bold text-sky-900 uppercase text-right"> bs.</span>
+                           </div>
+                        </div>
+                     </div>
+                     )}
+                     <div className="flex flex-col items-center">
+                        <span className="text-sm text-gray-700 dark:text-gray-400">
+                           Pagina <span className="font-semibold text-gray-900 dark:text-white">{count}</span> de <span className="font-semibold text-gray-900 dark:text-white">{response.meta.pagination.pageCount}</span> de <span className="font-semibold text-gray-900 dark:text-white">{response.meta.pagination.total}</span> Productos
+                        </span>
+                        <div className="inline-flex mt-2 xs:mt-0">
+                           <button disabled={1 === count} onClick={back} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                              <svg className="w-3.5 h-3.5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4" />
+                              </svg>
+                              Atras
+                           </button>
+                           <button disabled={response.meta.pagination.pageCount === count} onClick={next} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                              Siguiente
+                              <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                              </svg>
+                           </button>
+                        </div>
+                     </div>
+                  </>
                }
             </div>
          </div>
       </>
 
-   )
-}
-
-const CardProduct = ({ products }: any) => {
-   console.log(products)
-   return products.length < 1 ? <>Sin productos disponibles</> : products.map((element: any) =>
-      <div key={element.id} className="grid grid-cols-6 mt-5 ">
-
-         <Link key={element} href={{pathname: `/producto`,query: {producto: element.id}}} className="grid grid-cols-5 lg:col-span-4 col-span-6">
-            <div className="md:col-span-2 col-span-5 w-[195px] h-[195px] border-solid border-2 border-sky-900 flex justify-center items-center rounded-3xl">
-               <Image src={`https://www.dashboard.hauscenter.com.bo/${element.attributes.imagen.data[0].attributes.url}`} width={500} height={500} style={{ width: '140px', height: '140px', objectFit: 'contain' }} alt="12" />
-            </div>
-            <div className="md:col-span-3 col-span-5">
-               <span className="upperacase text-[25px] font-bold text-sky-900 leading-6">{element.attributes.nombre}.</span><br />
-               <span className="leading-3 text-sm">{element.attributes.descripcion_corta}</span>
-            </div>
-         </Link>
-         <div className="lg:col-span-2 col-span-6 flex flex-col justify-between">
-            <div className="text-right">
-               <span className="upperacase text-[25px] font-bold text-sky-900">{element.attributes.precio}</span>
-               <span className="upperacase text-[25px] font-bold text-sky-900 uppercase text-right"> bs.</span>
-            </div>
-            <div className="flex justify-end">
-               <button onClick={() => alert('love')}>❤</button>
-               <button>🛍</button>
-               <button>🛒</button>
-            </div>
-         </div>
-      </div>
    )
 }
 
@@ -154,7 +189,7 @@ const Category = () => {
       const fetchData = async () => {
          try {
             const api = new Api();
-            const data = await api.get(`https://www.dashboard.hauscenter.com.bo/api/categorias/${paramId}?populate=*`);
+            const data = await api.get(`https://www.dashboard.hauscenter.com.bo/api/categorias/${paramId}?populate[subcategorias][fields][0]=nombre`);
             setResponseSubcategoria(data.data.data.attributes.subcategorias.data);
             setLoadingSubcategoria(false);
          } catch (error) {
