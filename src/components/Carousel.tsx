@@ -1,112 +1,35 @@
-import { useState } from 'react';
-import ReactSimplyCarousel from 'react-simply-carousel';
 import CardProduct from './CardProduct';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { precioReal } from '@/utils/validarOferta';
 
-function Carousel() {
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-
+function Carousela({product}:any) {
+    const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 5
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
+      };
     return (
-        <div className=''>
-            <ReactSimplyCarousel
-                // containerProps={{
-                //     style: {
-                //       width: "100%",
-                //       justifyContent: "space-between",
-                //       userSelect: "none"
-                //     }
-                //   }}
-                activeSlideIndex={activeSlideIndex}
-                onRequestChange={setActiveSlideIndex}
-                itemsToShow={1}
-                itemsToScroll={1}
-                forwardBtnProps={{
-                    children: <span className='lg:inline-block hidden' style={{
-                                "width": 0,
-                                "height": 0,
-                                "borderLeft": "65px solid #8095ab",
-                                "borderTop": "45px solid transparent",
-                                "borderBottom": "45px solid transparent"
-                            }} ></span>,
-                    style: {
-                      width: 60,
-                      height: 60,
-                      minWidth: 60,
-                      alignSelf: "center"
-                    }
-                  }}
-                // forwardBtnProps={{
-                //     //here you can also pass className, or any other button element attributes
-                //     style: {
-                //         margin: 10,
-                //     },
-
-                //     children: <div className='lg:inline-block hidden' style={{
-                //         "width": 0,
-                //         "height": 0,
-                //         "borderLeft": "65px solid #8095ab",
-                //         "borderTop": "45px solid transparent",
-                //         "borderBottom": "45px solid transparent"
-                //     }} ></div>,
-                // }}
-                backwardBtnProps={{
-                    children: <span className='lg:inline-block hidden' style={{
-                        "width": 0,
-                        "height": 0,
-                        "borderRight": "65px solid #8095ab",
-                        "borderTop": "45px solid transparent",
-                        "borderBottom": "45px solid transparent"
-                    }} ></span>,
-                    style: {
-                      width: 60,
-                      height: 60,
-                      minWidth: 60,
-                      alignSelf: "center"
-                    }
-                  }}
-                // backwardBtnProps={{
-                //     //here you can also pass className, or any other button element attributes
-                //     style: {
-                //         margin: 10,
-                //     },
-                //     children: <div className='lg:inline-block hidden' style={{
-                //         "width": 0,
-                //         "height": 0,
-                //         "borderRight": "65px solid #8095ab",
-                //         "borderTop": "45px solid transparent",
-                //         "borderBottom": "45px solid transparent"
-                //     }} ></div>,
-                // }}
-                responsiveProps={[
-                    {
-                        itemsToShow: 3,
-                        itemsToScroll: 2,
-                        minWidth: 768,
-
-                    },
-                    // { maxWidth: 767, itemsToShow: 1 }
-                ]}
-                speed={400}
-                easing="linear"
-            >
-                {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
-                <div className='w-[300px] h-[350px] px-3'>
-                    <CardProduct title='NINTENDO SWITCH VER 1.0 SIN JUEGO INCLUIDO' />
-                </div>
-                <div className='w-[300px] h-[350px] px-3'>
-                    <CardProduct title='NINTENDO SWITCH VER 1.0 SIN JUEGO INCLUIDO' />
-                </div>
-                <div className='w-[300px] h-[350px] px-3'>
-                    <CardProduct title='NINTENDO SWITCH VER 1.0 SIN JUEGO INCLUIDO' />
-                </div>
-                <div className='w-[300px] h-[350px] px-3'>
-                    <CardProduct title='NINTENDO SWITCH VER 1.0 SIN JUEGO INCLUIDO' />
-                </div>
-                <div className='w-[300px] h-[350px] px-3'>
-                    <CardProduct title='NINTENDO SWITCH VER 1.0 SIN JUEGO INCLUIDO' />
-                </div>
-            </ReactSimplyCarousel>
-        </div>
+    <Carousel responsive={responsive}>
+        {product.map((element:any) => <div key={element.id} className='w-[300px] h-[350px] px-3'>
+            <CardProduct price={precioReal(element.attributes.inicio_oferta, element.attributes.limite_oferta, element.attributes.precio, element.attributes.precio_oferta)} title={element.attributes.nombre} img={`https:www.dashboard.hauscenter.com.bo${element.attributes.imagen.data[0].attributes.url}`} />
+        </div>)}
+    </Carousel>
     );
 }
 
-export default Carousel;
+export default Carousela;
