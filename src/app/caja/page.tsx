@@ -137,10 +137,13 @@ export default function CajaHome() {
                                             </div>
 
                                             {tienda ? <div>
-                                                <select name="" id="" required={tienda}>
+                                                <select name="" id="" required={tienda} className="rounded-full border-2 border-solid border-sky-900 text-xl px-4 py-1 text-sky-900 font-bold">
                                                     <option value="">Selecciona una opcion</option>
-                                                    <option value="1">TIENDA</option>
-                                                    <option value="1">TIENDA</option>
+                                                    <option value="Central">Central</option>
+                                                    <option value="Ventura">Ventura</option>
+                                                    <option value="Isabel La Catolica">Isabel La Catolica</option>
+                                                    <option value="Las Brisas">Las Brisas</option>
+                                                    <option value="Cbba">Cbba</option>
                                                 </select>
                                             </div> : <></>}
 
@@ -159,7 +162,7 @@ export default function CajaHome() {
                                             {tipo === 'contra_entrega' && (
                                                 <div>
                                                     {/* Aquí coloca el contenido que deseas mostrar cuando el checkbox está marcado */}
-                                                    <p>contra_entrega</p>
+                                                    <p className="text-sky-900 w-full">Tenga en cuenta que el pedido puede demorar entre 24 a 48 hrs. dias hábiles.</p>
                                                 </div>
                                             )}
 
@@ -170,8 +173,7 @@ export default function CajaHome() {
 
                                             {tipo === 'transferencia' && (
                                                 <div>
-                                                    {/* Aquí coloca el contenido que deseas mostrar cuando el checkbox está marcado */}
-                                                    <p>transferencia</p>
+                                                    <p className="text-sky-900 w-full">Tan pron­to como su pe­di­do sea com­proba­do y proce­sa­do por un agen­te de HausCenter, le en­via­re­mos una con­fir­ma­ción de pe­di­do con nues­tros datos ban­ca­rios. Por favor, tenga en cuen­ta que las trans­fe­ren­cias tar­dan aproxima­da­men­te 1 a 2 días la­bo­ra­bles en lle­gar y que su pe­di­do será en­via­do cuan­do re­ciba­mos la misma.</p>
                                                 </div>
                                             )}
 
@@ -183,7 +185,7 @@ export default function CajaHome() {
                                             {tipo === 'qr' && (
                                                 <div>
                                                     {/* Aquí coloca el contenido que deseas mostrar cuando el checkbox está marcado */}
-                                                    <p>qr</p>
+                                                    <p><Image src={'/qr.jpeg'} width={600} height={600} style={{width:600, height: 600, objectFit: 'contain'}} alt="qr"></Image></p>
                                                 </div>
                                             )}
 
