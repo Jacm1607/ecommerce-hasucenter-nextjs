@@ -67,7 +67,7 @@ const LinkComponent = ({ subcategorias }: any) => {
             <div className="inline-block min-w-full">
                {subcategorias.length < 1 ?
                   <> Sin subcategorias disponibles </> :
-                  subcategorias.map((item: any) => <div onClick={() => getInfo(item.id)} key={item.id} className="inline-block cursor-pointer mx-4"><center><Image src="https://placehold.co/150x150/png" width={150} height={150} alt="Picture of the author" />{item.attributes.nombre}</center></div>
+                  subcategorias.map((item: any) => <div onClick={() => getInfo(item.id)} key={item.id} className="inline-block cursor-pointer mx-4"><center><Image src={`https://www.dashboard.hauscenter.com.bo${item.attributes.imagen.data.attributes.url}`} width={150} height={150} alt={item.attributes.nombre} style={{width: 75, height: 100 , objectPosition: 'cover'}} />{item.attributes.nombre}</center></div>
                   )}
             </div>
          </div>
@@ -189,8 +189,10 @@ const Category = () => {
       const fetchData = async () => {
          try {
             const api = new Api();
-            const data = await api.get(`https://www.dashboard.hauscenter.com.bo/api/categorias/${paramId}?populate[subcategorias][fields][0]=nombre`);
+            const data = await api.get(`https://www.dashboard.hauscenter.com.bo/api/categorias/${paramId}?populate[subcategorias][populate][fields][0]=nombre&populate[subcategorias][populate][imagen][fields][1]=url`);
             setResponseSubcategoria(data.data.data.attributes.subcategorias.data);
+            console.log(responseSubcategoria);
+            
             setLoadingSubcategoria(false);
          } catch (error) {
             console.error('Error fetching data:', error);
