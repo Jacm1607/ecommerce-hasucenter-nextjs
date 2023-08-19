@@ -73,7 +73,7 @@ const LinkComponent = ({ subcategorias }: any) => {
          </div>
 
          <div className="grid grid-cols-6 gap-16 mt-16 mx-4">
-            <div className="md:col-span-2 col-span-6">
+            {/* <div className="md:col-span-2 col-span-6">
                <TitleSectionBorder title="Filtros" />
                <div className="space-y-6 mt-10">
                   <div className="marca">
@@ -124,8 +124,8 @@ const LinkComponent = ({ subcategorias }: any) => {
                      </div>
                   </div>
                </div>
-            </div>
-            <div className="md:col-span-4 col-span-6">
+            </div> */}
+            <div className="md:col-span-4 col-span-6 ">
                <TitleSectionBorder title="Productos" />
 
                {loading
@@ -173,7 +173,7 @@ const LinkComponent = ({ subcategorias }: any) => {
                   </>
                }
             </div>
-         </div>
+            </div>
       </>
 
    )
@@ -203,7 +203,7 @@ const Category = () => {
    }, []);
    return (
       <>
-         <div className="w-full gap-4 p-4 flex flex-wrap justify-start">
+         <div className="w-full gap-4 p-4 flex flex-wrap justify-start"> 
             {loadingSubcategoria ? <Loading /> : <LinkComponent subcategorias={responseSubcategoria} />}
          </div>
       </>
