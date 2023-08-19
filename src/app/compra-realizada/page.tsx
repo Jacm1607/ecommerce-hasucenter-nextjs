@@ -2,6 +2,7 @@
 import Link from "next/link";
 import LayoutProject from "../layout/layoutProyect";
 import { useEffect } from "react";
+import { Api } from "@/services/api";
 
 function Home() {
 
@@ -9,6 +10,18 @@ function Home() {
         if (typeof window !== "undefined") {
             localStorage.setItem('product','[]')
         }
+
+        const fetchData = async () => {
+            try {
+                const api = new Api();
+                await api.post(`https://www.email.hauscenter.com.bo/api/send-email`, {});
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+        //
     },[])
     return (
         <LayoutProject>
