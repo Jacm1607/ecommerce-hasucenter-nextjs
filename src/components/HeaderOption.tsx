@@ -21,7 +21,7 @@ const HeaderOption = () => {
         <div className="flex flex-wrap justify-center lg:justify-end gap-2 my-4">
           <Link href={'mi-cuenta'} className="uppercase py-1 px-4 border-2 border-sky-800 rounded-3xl text-sky-800  font-semibold place-items-center flex justify-center gap-2 h-12 w-40 text-start text-sm"><Image src={'/btn-cuenta.png'} width={30} height={30} alt={""} /> Mi cuenta</Link>
           {/* <Button label="SEGUIR MI PEDIDO" /> */}
-          <Link href={'mi-cuenta'} className="uppercase py-1 px-4 border-2 border-sky-800 rounded-3xl text-sky-800  font-semibold place-items-center flex justify-center gap-2 h-12 w-40 text-start text-sm"><Image src={'/btn-credito.png'} width={30} height={30} alt={""} /> CREDI HAUS</Link>
+          {/* <Link href={'mi-cuenta'} className="uppercase py-1 px-4 border-2 border-sky-800 rounded-3xl text-sky-800  font-semibold place-items-center flex justify-center gap-2 h-12 w-40 text-start text-sm"><Image src={'/btn-credito.png'} width={30} height={30} alt={""} /> CREDI HAUS</Link> */}
         </div>
       </div>
     </div>

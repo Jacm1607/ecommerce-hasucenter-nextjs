@@ -15,7 +15,7 @@ const Header = () => {
                 <div className="lg:col-span-1 col-span-3 flex items-center justify-end gap-2">
                     <Button url="/mi-cuenta" icon="/btn-cuenta-blanco.png" primary={false} label="MI CUENTA" />
                     {/* <Button primary={false} label="Segui mi pedido" /> */}
-                    <Button primary={false} icon="/btn-credito-blanco.png" label="Credi Haus" />
+                    {/* <Button primary={false} icon="/btn-credito-blanco.png" label="Credi Haus" /> */}
                 </div>
                 <div className="col-span-3 lg:col-span-1 flex flex-wrap justify-end">
                     <div className="flex items-center justify-end gap-2 my-2">

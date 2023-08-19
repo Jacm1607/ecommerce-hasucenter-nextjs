@@ -13,7 +13,7 @@ const Header = () => {
                 <div className="col-span-2 lg:col-span-1 flex items-center justify-end gap-2">
                     <Button primary={false} label="MI CUENTA" />
                     <Button primary={false} label="Segui mi pedido" />
-                    <Button primary={false} label="Credi Haus" />
+                    {/* <Button primary={false} label="Credi Haus" /> */}
                 </div>
                 <div className="col-span-3 lg:col-span-1 flex flex-wrap justify-end">
                     <div className="flex items-center justify-end gap-2 my-2">
