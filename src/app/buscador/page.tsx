@@ -28,8 +28,8 @@ export default function CategoryHome({searchParams}:any) {
     return (
             <LayoutProject>
                 {loading
-                  ? <div className="my-72 text-base font-semibold text-sky-800 text-3xl">Buscando...</div>
-                  : response.data.length < 1 ? <>No se encontro productos</> : <div className="my-14">
+                  ? <div className="my-72 font-semibold text-sky-800 text-3xl">Buscando...</div>
+                  : response.data.length < 1 ? <div className="my-72 font-semibold text-sky-800 text-3xl">No se encontro productos</div> : <div className="my-14">
                   <p className="text-3xl text-sky-800 font-semibold">Producto encontrados con la palabra: <span className="font-extrabold text-black">&quot;{searchParams.query}&quot;</span></p>
                   {response.data.map((element: any) =>
                      <div key={element.id} className="grid grid-cols-6 mt-5 ">
