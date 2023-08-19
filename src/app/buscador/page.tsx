@@ -1,7 +1,5 @@
 "use client"
 import LayoutProject from "../layout/layoutProyect";
-import TitleSectionBorder from "@/components/TitleSectionBorder";
-import Category from "../views/Category";
 import { useEffect, useState } from "react";
 import { Api } from "@/services/api";
 import Link from "next/link";
@@ -28,12 +26,11 @@ export default function CategoryHome({searchParams}:any) {
         fetchData();
     }, []);
     return (
-        <>
             <LayoutProject>
                 {loading
                   ? <div className="my-72 text-base font-semibold text-sky-800">Buscando...</div>
                   : response.data.length < 1 ? <>No se encontro productos</> : <div className="my-14">
-                  <p className="text-3xl text-sky-800 font-semibold">Producto encontrados con la palabra: <span className="font-extrabold text-black">"{searchParams.query}"</span></p>
+                  <p className="text-3xl text-sky-800 font-semibold">Producto encontrados con la palabra: <span className="font-extrabold text-black">`&quot;`{searchParams.query}`&quot;`</span></p>
                   {response.data.map((element: any) =>
                      <div key={element.id} className="grid grid-cols-6 mt-5 ">
                
@@ -57,6 +54,5 @@ export default function CategoryHome({searchParams}:any) {
                   </div>
                }
             </LayoutProject>
-        </>
     )
 }
