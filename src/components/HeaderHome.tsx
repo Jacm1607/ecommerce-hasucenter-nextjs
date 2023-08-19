@@ -17,10 +17,10 @@ const HeaderHome = () => {
                             <p className="text-white text-sm leading-4">CREDITO APROBADO EN 24 HORAS</p>
                         </div>
                         <div className="border-l-2 h-10 border-white">&nbsp;</div>
-                        <Image src="/facebook.png" width={40} height={40} alt="facebook" />
-                        <Image src="/instagram.png" width={40} height={40} alt="instagram" />
-                        <Image src="/youtube.png" width={40} height={40} alt="youtube" />
-                        <Image src="/tik-tok.png" width={40} height={40} alt="tiktok" />
+                        <Link href={'https://www.facebook.com/Hauscenter.Bolivia?mibextid=ZbWKwL'}><Image src="/facebook.png" width={40} height={40} alt="facebook" /></Link>
+                        <Link href={'https://instagram.com/hauscenterbo'}><Image src="/instagram.png" width={40} height={40} alt="instagram" /></Link>
+                        <Link href={'https://youtube.com/@hauscenterbolivia4387'}><Image src="/youtube.png" width={40} height={40} alt="youtube" /></Link>
+                        <Link href={'https://www.tiktok.com/@hauscenterbolivia?is_from_webapp=1&sender_device=pc'}><Image src="/tik-tok.png" width={40} height={40} alt="tiktok" /></Link>
                     </div>
                 </div>
             </div>
