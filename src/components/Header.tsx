@@ -8,7 +8,7 @@ const Header = () => {
         <>
             <div className="grid grid-cols-3 bg-sky-800 px-2">
                 <div className="col-span-3 lg:col-span-1 flex items-center gap-2 h-20">
-                    <Link href={'/'} ><Image src="/hauscenter-blanco.png" width={50} height={50} alt="" /></Link>
+                    <Link href={'/'} ><Image src="/logo-blanco.png" width={50} height={50} alt="" /></Link>
                     <Search />
                     <Link href={'/lista-compra'} ><Image src="/bolsa-de-la-compra.png" width={50} height={50} alt="http://via.placeholder.com/12x12" /></Link>
                 </div>
