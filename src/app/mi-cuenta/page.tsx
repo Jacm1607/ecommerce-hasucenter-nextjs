@@ -152,6 +152,20 @@ const PageCuenta = () => {
       password: password,
       username: username
     };
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+    if (!emailRegex.test(userData.email)) {
+      return alert('Dirección de correo electrónico no válida');
+    } 
+
+    if (userData.username.length < 4) {
+      return alert('Ingrese como minimo 4 caracter en username');
+    }
+
+    if (!passwordRegex.test(userData.password)) {
+      return alert('La contraseña debe tener al menos 8 caracteres, una letra minúscula, una letra mayúscula y un número.')
+    }
 
     const api = new Api();
     const data = await api.post(`https://www.dashboard.hauscenter.com.bo/api/auth/local/register`, userData);
@@ -226,7 +240,7 @@ const PageCuenta = () => {
 
                 <div className="flex flex-col">
                   <span className="text-xl font-extrabold text-sky-900 uppercase ">Contraseña</span>
-                  <input type="text" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" required placeholder="" />
+                  <input type="password" onChange={handlePasswordChange} className="h-[50px] rounded-full border-solid border-2 border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" required placeholder="" />
                 </div>
 
                 <button type="submit" className="text-xl font-extrabold text-white bg-sky-900 rounded-full py-2 px-8 uppercase mt-4">Crear cuenta</button>
