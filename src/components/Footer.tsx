@@ -18,7 +18,7 @@ import Link from "next/link"
                 </div>
                 <div className="flex flex-col">
                     <TitleFooter title='SERVICIO AL CLIENTE' img={'/servicio-cliente.png'}/>
-                    <Link href={'/'} className="text-white text-xl">Términos y Condiciones</Link>
+                    <Link href={'terminos-condiciones'} className="text-white text-xl">Términos y Condiciones</Link>
                     <Link href={'/'} className="text-white text-xl">Preguntas Frecuentes</Link>
                     <Link href={'/'} className="text-white text-xl">Centro de Ayuda</Link>
                 </div>
