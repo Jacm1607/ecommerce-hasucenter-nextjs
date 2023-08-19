@@ -6,7 +6,7 @@ import Link from "next/link"
         <div className="w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 bg-sky-900 pt-14 pb-4 px-4">
                 <div className="mb-20">
-                    <Image src={'/hauscenter-blanco.png'} width={350} height={250} style={{width:350, height:200, objectPosition: 'cover'}} alt="" />
+                    <Image src={'/hauscenter-blanco.png'} width={220} height={250} style={{width:220, height:200, objectPosition: 'cover'}} alt="" />
                 </div>
                 <div className="flex flex-col">
                     <TitleFooter title='¿QUIÉNES SOMOS?' img={'/quienes-somos.png'} />
