@@ -5,20 +5,38 @@ import TitleSectionBorder from "@/components/TitleSectionBorder";
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Api } from "@/services/api";
 
 
 export default function CajaHome() {
+    const router = useRouter()
     const [tienda, setTienda] = useState(false);
     const [tipo, setTipo] = useState('')
 
-    const handleCheckBoxChangeTienda = () => {
-        setTienda(true);
+
+    const [nombre, setNombre] = useState('');
+    const [telefono, setTelefono] = useState('');
+    const [ci, setCi] = useState('');
+    const [correo, setCorreo] = useState('');
+    const [nit, setNit] = useState('');
+    const [razonSocial, setRazonSocial] = useState('');
+    const [direccion, setDireccion] = useState('');
+    const [metodoPago, setMetodoPago] = useState('');
+    const [metodoEnvio, setMetodoEnvio] = useState('');
+
+    const handleCheckBoxChangeTienda = (event:any) => {
+        if (event.target.value === 'tienda') {
+            setTienda(true)
+            setMetodoEnvio('TIENDA')
+        } else {
+            setMetodoEnvio('ENVIO NORMAL')
+            setTienda(false)
+        }
     };
-    const hideTienda = () => {
-        setTienda(false);
-    };
+
     const handleCheckBoxChangeTipo = (tipo: string) => {
         setTipo(tipo);
+        setMetodoPago(tipo);
     };
     if (typeof window !== "undefined") {
         let productsString = localStorage.getItem('product');
@@ -43,6 +61,10 @@ export default function CajaHome() {
         }
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
+            console.log(products)
+            if (products.length < 1) {
+                router.replace('/')
+            }
             if (products !== null) {
                 updateTotal()
             }
@@ -50,10 +72,48 @@ export default function CajaHome() {
                 setToken(true)
             }
         }, [])
+
+        const handleSubmit = async (event:any) => {
+            event.preventDefault();
+            // console.log('Nombre:', nombre);
+            // console.log(ci);
+            // console.log('Correo:', correo);
+            // console.log(telefono);
+            // console.log(nit);
+            // console.log(razonSocial);
+            // console.log(direccion);
+            // console.log(metodoPago);
+            // console.log(metodoEnvio);
+            // console.log('-------');
+    
+            const dataForm = { data: {
+                nombre_completo: nombre,
+                ci: ci,
+                email: correo,
+                nit: nit,
+                razon_social: razonSocial,
+                direccion: direccion,
+                celular: telefono,
+                costo_envio: 0,
+                subtotal: 1000
+            }}
+    
+            const api = new Api();
+            const data = await api.post(`https://www.dashboard.hauscenter.com.bo/api/ordens`, dataForm);
+            if (data.status === 200) {
+                // alert('Compra realizada exitosamente. En este momento nos encontramos procesandos su pedido')
+                router.push('/compra-realizada')
+            }
+            else {
+                alert("Error al registrar intente mas tarde.")
+            }
+            
+            // Aquí puedes realizar acciones adicionales, como enviar los datos al servidor.
+          };
         return (
             <>
                 <LayoutProject>
-                    <form action="" method="post">
+                    <form onSubmit={handleSubmit} method="post">
                         <div className="grid grid-cols-3 mt-4">
                             <div className="col-span-3">
                                 <TitleSectionBorder title="Caja" />
@@ -76,49 +136,49 @@ export default function CajaHome() {
                                     <div className="md:col-span-1 col-span-2">
                                         <div className="flex flex-col">
                                             <span className="text-xl font-extrabold text-sky-900 uppercase ">Nombre completo</span>
-                                            <input type="text" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
+                                            <input onChange={(event) => setNombre(event.target.value)} type="text" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
                                         </div>
                                     </div>
 
                                     <div className="md:col-span-1 col-span-2">
                                         <div className="flex flex-col">
                                             <span className="text-xl font-extrabold text-sky-900 uppercase ">Número telefono</span>
-                                            <input type="number" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
+                                            <input onChange={(event) => setTelefono(event.target.value)} type="number" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
                                         </div>
                                     </div>
 
                                     <div className="md:col-span-1 col-span-2">
                                         <div className="flex flex-col">
                                             <span className="text-xl font-extrabold text-sky-900 uppercase ">Carnet identidad</span>
-                                            <input type="number" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
+                                            <input onChange={(event) => setCi(event.target.value)} type="number" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
                                         </div>
                                     </div>
 
                                     <div className="md:col-span-1 col-span-2">
                                         <div className="flex flex-col">
                                             <span className="text-xl font-extrabold text-sky-900 uppercase ">correo electronico</span>
-                                            <input type="email" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
+                                            <input onChange={(event) => setCorreo(event.target.value)} type="email" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
                                         </div>
                                     </div>
 
                                     <div className="md:col-span-1 col-span-2">
                                         <div className="flex flex-col">
                                             <span className="text-xl font-extrabold text-sky-900 uppercase ">Razon social / Nombre</span>
-                                            <input type="text" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
+                                            <input onChange={(event) => setRazonSocial(event.target.value)} type="text" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
                                         </div>
                                     </div>
 
                                     <div className="md:col-span-1 col-span-2">
                                         <div className="flex flex-col">
                                             <span className="text-xl font-extrabold text-sky-900 uppercase ">Nit / Ci (Opcional)</span>
-                                            <input type="number" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
+                                            <input onChange={(event) => setNit(event.target.value)} type="number" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
                                         </div>
                                     </div>
 
                                     <div className="col-span-2">
                                         <div className="flex flex-col">
                                             <span className="text-xl font-extrabold text-sky-900 uppercase ">Dirección</span>
-                                            <input type="text" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
+                                            <input onChange={(event) => setDireccion(event.target.value)} type="text" className="h-[50px] rounded-full border-solid border-[1px] border-sky-900 focus:outline-none focus:border-sky-900 focus:ring-0 focus:ring-sky-900 placeholder:text-3xl text-xl px-4" placeholder="" required />
                                         </div>
                                     </div>
 
@@ -127,7 +187,7 @@ export default function CajaHome() {
 
                                         <fieldset className="my-5">
                                             <div className="flex items-center">
-                                                <input id="normal" onChange={hideTienda} aria-labelledby="normal" aria-describedby="normal" type="radio" name="envio" value="normal" className="h-4 w-4 border-sky-300 focus:ring-0" required />
+                                                <input id="normal" onChange={handleCheckBoxChangeTienda} aria-labelledby="normal" aria-describedby="normal" type="radio" name="envio" value="normal" className="h-4 w-4 border-sky-300 focus:ring-0" required />
                                                 <label htmlFor={"normal"} className="text-[25px] font-semibold text-sky-900 ml-2 block uppercase">ENVIO NORMAL</label>
                                             </div>
 
@@ -137,7 +197,7 @@ export default function CajaHome() {
                                             </div>
 
                                             {tienda ? <div>
-                                                <select name="" id="" required={tienda} className="rounded-full border-2 border-solid border-sky-900 text-xl px-4 py-1 text-sky-900 font-bold">
+                                                <select name="" id="" onChange={(event) => setMetodoEnvio(event.target.value)} required={tienda} className="rounded-full border-2 border-solid border-sky-900 text-xl px-4 py-1 text-sky-900 font-bold">
                                                     <option value="">Selecciona una opcion</option>
                                                     <option value="Central">Central</option>
                                                     <option value="Ventura">Ventura</option>
@@ -154,17 +214,6 @@ export default function CajaHome() {
                                         <TitleSectionBorder title="METODO PAGO" />
 
                                         <fieldset className="my-5">
-                                            <div className="flex items-center">
-                                                <input onChange={() => handleCheckBoxChangeTipo('contra_entrega')} id="contraEntrega" aria-labelledby="contraEntrega" aria-describedby="contraEntrega" type="radio" name="pago" value="contra_entrega" className="h-4 w-4 border-sky-300 focus:ring-0" required />
-                                                <label htmlFor={"contraEntrega"} className="text-[25px] font-semibold text-sky-900 ml-2 block uppercase">contra entrega</label>
-                                            </div>
-
-                                            {tipo === 'contra_entrega' && (
-                                                <div>
-                                                    {/* Aquí coloca el contenido que deseas mostrar cuando el checkbox está marcado */}
-                                                    <p className="text-sky-900 w-full">Tenga en cuenta que el pedido puede demorar entre 24 a 48 hrs. dias hábiles.</p>
-                                                </div>
-                                            )}
 
                                             <div className="flex items-center">
                                                 <input onChange={() => handleCheckBoxChangeTipo('transferencia')} id="transferencia" aria-labelledby="transferencia" aria-describedby="transferencia" type="radio" name="pago" value="Transferencia" className="h-4 w-4 border-sky-300 focus:ring-0" required />
