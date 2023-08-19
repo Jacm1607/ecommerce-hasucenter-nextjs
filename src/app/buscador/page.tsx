@@ -7,14 +7,14 @@ import Image from "next/image";
 
 
 export default function CategoryHome({searchParams}:any) {
-    console.log(searchParams)
+    const { query } = searchParams;
     const [response, setResponse] = useState<any>([])
     const [loading, setLoading] = useState<any>(true)
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const api = new Api();
-                const data = await api.get(`https://www.dashboard.hauscenter.com.bo/api/productos?filters[nombre][$contains]=${searchParams.query}&populate[imagen][fields][0]=url&pagination[limit]=10`);
+                const data = await api.get(`https://www.dashboard.hauscenter.com.bo/api/productos?filters[nombre][$contains]=${query}&populate[imagen][fields][0]=url&pagination[limit]=10`);
                 console.log(data)
                 setLoading(false);
                 setResponse(data.data);
