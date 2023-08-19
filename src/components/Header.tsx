@@ -8,13 +8,14 @@ const Header = () => {
         <>
             <div className="grid grid-cols-3 bg-sky-800 px-2">
                 <div className="col-span-3 lg:col-span-1 flex items-center gap-2 h-20">
+                    <Link href={'/'} ><Image src="/hauscenter-blanco.png" width={50} height={50} alt="" /></Link>
                     <Search />
                     <Link href={'/lista-compra'} ><Image src="/bolsa-de-la-compra.png" width={50} height={50} alt="http://via.placeholder.com/12x12" /></Link>
                 </div>
                 <div className="lg:col-span-1 col-span-3 flex items-center justify-end gap-2">
-                    <Button url="/mi-cuenta" primary={false} label="MI CUENTA" />
+                    <Button url="/mi-cuenta" icon="/btn-cuenta-blanco.png" primary={false} label="MI CUENTA" />
                     {/* <Button primary={false} label="Segui mi pedido" /> */}
-                    <Button primary={false} label="Credi Haus" />
+                    <Button primary={false} icon="/btn-credito-blanco.png" label="Credi Haus" />
                 </div>
                 <div className="col-span-3 lg:col-span-1 flex flex-wrap justify-end">
                     <div className="flex items-center justify-end gap-2 my-2">
