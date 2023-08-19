@@ -61,7 +61,7 @@ const Home = () => {
       <div className="mt-16">
       <TitleSection title="DESCUBRE LAS" subtitle="NOVEDADES HAUS" />
       <div className="flex justify-center">
-        <div className="lg:w-1/2 w-full">
+        <div className="lg:w-7/12 w-full">
           <Carousela product={prod1} />
         </div>
       </div>
