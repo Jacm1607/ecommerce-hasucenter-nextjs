@@ -5,8 +5,8 @@ import Link from "next/link"
     return (
         <div className="w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 bg-sky-900 pt-14 pb-4 px-4">
-                <div className="">
-                    <Image src={'/hauscenter-blanco.png'} width={350} height={250} alt="" />
+                <div className="mb-20">
+                    <Image src={'/hauscenter-blanco.png'} width={350} height={250} style={{width:350, height:200, objectPosition: 'cover'}} alt="" />
                 </div>
                 <div className="flex flex-col">
                     <TitleFooter title='¿QUIÉNES SOMOS?' img={'/quienes-somos.png'} />
@@ -22,7 +22,7 @@ import Link from "next/link"
                     <Link href={'/'} className="text-white text-xl">Centro de Ayuda</Link>
                 </div>
                 <div className="flex flex-col">
-                    <TitleFooter title='Sucursales' img={'/quienes-somos.png'}/>
+                    <TitleFooter title='SUCURSALES' img={'/quienes-somos.png'}/>
                     <Link href={'https://goo.gl/maps/V5vMLQre2vnL4x298'} className="text-white text-xl">Central - Cañoto</Link>
                     <Link href={'https://goo.gl/maps/Vt54zY5bczzdMpyp9'} className="text-white text-xl">Las Brisas</Link>
                     <Link href={'https://goo.gl/maps/t3uDvZsbULxcHb3f9'} className="text-white text-xl">Mega Center</Link>
